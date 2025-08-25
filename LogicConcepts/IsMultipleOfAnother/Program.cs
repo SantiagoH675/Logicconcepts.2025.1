@@ -1,4 +1,6 @@
 ﻿using Shared;
+var answer = string.Empty;
+var options = new List<string> { "s", "n" };
 do
 {
     var a = ConsoleExtension.GetInt("Ingrese el primer número: ");
@@ -11,4 +13,9 @@ do
     {
         Console.WriteLine($"{a} No es múltiplo de {b}");
     }
-} while (true);
+  do
+  {
+        answer = ConsoleExtension.GetValidOptions("¿Desea continuar [S]í, [N]o?: ", options);
+  } while (!options.Any(x => x.Equals(answer, StringComparison.CurrentCultureIgnoreCase)));
+} while (answer!.Equals("s", StringComparison.CurrentCultureIgnoreCase)) ;
+Console.WriteLine("Game Over");
